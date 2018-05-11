@@ -1,0 +1,796 @@
+{
+	"Chainable ES6 Setter": {
+		"prefix": "setter - ES6",
+		"body": [
+			"${1:variable}(${1:variable}){",
+			"  this._${1:variable} = ${1:variable};",
+			"  return this;",
+			"}$0"
+		]
+	},
+	"Class Based React Component": {
+		"prefix": "component - React",
+		"body": [
+			"import React from 'react';",
+			"",
+			"require('./${2:style}');",
+			"",
+			"class ${1:name} extends React.Component {",
+			"  constructor(props) {",
+			"    super(props);",
+			"    /* init component */",
+			"  }",
+			"",
+			"  render() {",
+			"    return (",
+			"      <div className='${4}'>",
+			"        ${5}",
+			"      </div>",
+			"    );",
+			"  }",
+			"}",
+			"",
+			"module.exports = ${1:name};",
+			""
+		]
+	},
+	"Promise Then": {
+		"prefix": "then",
+		"body": [
+			".then(",
+			" (${data}) => {",
+			"",
+			" },",
+			" (error) => {",
+			"	",
+			"	},",
+			")"
+		]
+	},
+	/*
+	 // Place your snippets for JavaScript here. Each snippet is defined under a snippet name and has a prefix, body and 
+	 // description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	 // $1, $2 for tab stops, ${id} and ${id:label} and ${1:label} for variables. Variables with the same id are connected.
+	 // Example:
+	 "Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log('$1');",
+			"$2"
+		],
+		"description": "Log output to console"
+	},
+	*/
+	"BackboneHandlebarsController": {
+		"prefix": "Controller - Backbone/Handlebars",
+		"body": [
+			"import LoggableController from '../../modules/LoggableController';",
+			"",
+			"/* views */",
+			"import ${ctlr}View from './${ctlr}.view';",
+			"",
+			"export default class ${ctlr}Ctlr extends LoggableController {",
+			"constructor(appRouter, model) {",
+			"super('${ctlr}Ctlr');",
+			"",
+			"this.appRouter = appRouter;",
+			"this.model = model;",
+			"",
+			"/* construct the view */",
+			"this.constructView();",
+			"}",
+			"",
+			"constructView() {",
+			"/* create the view */",
+			"this.view = new ${ctlr}View({",
+				"loggerName: '${ctlr}View',",
+				"ctlr: this,",
+				"el: '#root',",
+				"model: this.model,",
+				"});",
+				"}",
+				"}",
+				""
+		]
+	},
+	"BackboneHandlebarsView": {
+		"prefix": "View - Backbone/Handlebars",
+		"body": [
+			"import LoggableView from '../../modules/LoggableView';",
+			"",
+			"/* bring in styles and template */",
+			"require('./${View}.scss');",
+			"const template = require('./${View}.handlebars');",
+			"",
+			"const ${View} = LoggableView.extend({",
+			"/* bind events */",
+			"events: { },",
+			"/* render */",
+			"render() {",
+			"const data = this.model.attributes;",
+			"const html = template(data);",
+			"",
+			"this.\\$el.empty();",
+			"this.\\$el.append(html);",
+			"},",
+			"});",
+			"",
+			"export default ${View};",
+			""
+		]
+	},
+	"Icon": {
+		"prefix": "icon",
+		"body": [
+			"const icon${nameUpper} = require('../../images/icon-${nameLower}.svg');"
+		]
+	},
+	"ES6 getter/setter": {
+		"prefix": "getter/setter",
+		"body": [
+			"set ${property}(${param}) {",
+			"this.\\$${property} = ${param};",
+			"}",
+			"",
+			"get ${property}() {",
+			"	return this.\\$${property};",
+			"}"
+		]
+	},
+	"Brand": {
+		"prefix": "brand",
+		"body": [
+			"$1: {",
+			"name: '$2',",
+			"icon: Images.logos.$3,",
+			"},"
+		]
+	},
+	"Angular 1.6 Controller Binding": {
+		"prefix": "ctrl - angular 1.6",
+		"body": [
+			"{{/$ctrl.${1}}"
+		]
+	},
+	"ES6 Angular 1.6 Component": {
+		"prefix": "component - angular ES6",
+		"body": [
+			"import controller from './${componentName}.controller';",
+			"import style from './${componentName}.scss';",
+			"import template from './${componentName}.html';",
+			"",
+			"const ${componentName} = {",
+			"  bindings: {},",
+			"  template,",
+			"  controller,",
+			"  style,",
+			"};",
+			"",
+			"export default ${componentName};"
+		]
+	},
+	"ES6 Get Logger": {
+		"prefix": "getLogger",
+		"body": [
+			"const logger = this.getLogger('${loggerName}');",
+			"logger.log('called!');"
+		]
+	},
+	"ES6 Angular 1.6 Controller - Stateful": {
+		"prefix": "controller - angular ES6 (Stateful)",
+		"body": [
+			"import Stateful from '../../modules/Stateful.module';",
+			"import ${filterName} from '../../actions/${filterModule}';",
+			"",
+			"export default class ${controllerName} extends Stateful {",
+			"",
+			"  constructor(\\$ngRedux) {",
+			"		/* call Stateful's constructor */",
+			"		super('${controllerName}', \\$ngRedux, ${filterName});",
+			"		this.logger.log('${controllerName} constructed!');",
+			"	}",
+			"",
+			"  /* CORE FUNCTIONALITY */ ",
+			"	 /* ------------------------------------------------------------------ */",
+			"",
+			"	onStateChange(state) {",
+			"		this.logger.log('State changed! %O', state);",
+			"		return {};",
+			"	}",
+			"",
+			"	/* ANGULAR LIFECYCLE METHODS */",
+			"	/* https://docs.angularjs.org/guide/component */",
+			"	/* ------------------------------------------------------------------ */",
+			"",
+			"	/**",
+			"	* called after all controllers on an element have been constructed and",
+			"	* had their bindings initialized.",
+			"	*/",
+			"	\\$onInit() {",
+			"		",
+			"	}",
+			"",
+			"	/**",
+			"	* called after a controller's element and children have been linked.",
+			" * Child elems templates not compiled yet, Good for DOM setup.",
+			"	*/",
+			"	\\$postLink() {",
+			"		",
+			"	}",
+			"",
+			"	/**",
+			"	* called when the controller's containing scope is destroyed. Use this",
+			" * to release resources, watches and event handlers.",
+			"	*/",
+			"	\\$onDestroy() {",
+			"		",
+			"	}",
+			"",
+			"	/**",
+			"	* called when one-way bindings are updated.",
+			"	*/",
+			"	\\$onChanges(changes) {",
+			"		this.logger.log('\\$onChanges: %O', changes);",
+			"	}",
+			"",
+			"	/**",
+			"	* called each turn of the digest cycle. Has no effect on \\$onChanges. ",
+			"	*/",
+			"	\\$doCheck() {",
+			"		",
+			"	}",
+			"	/* GETTERS / SETTERS */",
+			"	/* ------------------------------------------------------------------ */",
+			"}"
+		]
+	},
+	"ES6 Angular 1.6 Controller": {
+		"prefix": "controller - angular ES6",
+		"body": [
+			"export default class ${1:componentName}Controller {",
+			"  constructor() {",
+			"    ${2}",
+			"  }",
+			"",
+			"  $onInit() {",
+			"    ",
+			"  }",
+			"",
+			"  $onUpdate(data) {",
+			"    ",
+			"  }",
+			"",
+			"  $onDestroy() {",
+			"    ",
+			"  }",
+			"}"
+		]
+	},
+	"ES6 Angular 1.6 Component Spec": {
+		"prefix": "spec - angular 1.6 ES6",
+		"body": [
+			"describe('Component: ${componentName}', () => {",
+			"	beforeEach(angular.mock.module('app'));",
+			"",
+			"	let element;",
+			"	let scope;",
+			"	let controller;",
+			"",
+			"	beforeEach(inject((\\$rootScope, \\$compile) =>  {",
+			"		scope = \\$rootScope.\\$new();",
+			"		element = angular.element('<${component-name}></${component-name}>');",
+			"		element = \\$compile(element)(scope);",
+			"		controller = element.controller('${componentName}');",
+			"		// scope.attr-value = 'test'; //if component has attributes",
+			"		scope.\\$apply();",
+			"	}));",
+			"",
+			"	/* example",
+			"	it('should expose a clickTest method', () => {",	
+			"		expect(typeof controller.clickTest === 'function').toBe(true);",
+			"	}); */",
+			"",
+			"	/* example",
+			"	it('', () => {",
+			"		expect(controller.name).toBe('not clicked');",
+			"		controller.clickTest();",
+			"		expect(controller.name).toBe('clicked');",
+			"	}); */",
+			"",
+			"});"
+		]
+	},
+	"ES6 Angular 1.6 Component Import": {
+		"prefix": "import - Angular 1.6 ES6",
+		"body": [
+			"import ${componentName} from './${componentName}/${componentName}.component';"
+		]
+	},
+	"Comment Method": {
+		"prefix": "method",
+		"body": [
+			"/* === $1 === */",
+			"/*",
+			"    $2",
+			"*/",
+			"this.${3:methodName} = function(${4:params}){",
+			"    $5",
+			"};"
+		]
+	},
+	"Logbone Debug": {
+		"prefix": "debug",
+		"body": [
+			"this.logger.debug('${1:message}');"
+		]
+	},
+	"Comment": {
+		"prefix": "cmt",
+		"body": [
+			"/*--$1--*/"
+		]
+	},
+	"Create a Backbone function": {
+		"prefix": "bfn",
+		"body": [
+			"$1: function($2){",
+			"	$3",
+			"}"
+		]
+	},
+	"Create a named function": {
+		"prefix": "fn",
+		"body": [
+			"function ${1:name}($2){",
+			"	$3",
+			"}"
+		]
+	},
+	"Create an anonymous function": {
+		"prefix": "afn",
+		"body": [
+			"function($1){",
+			"	$2",
+			"}"
+		]
+	},
+	"Angular Component": {
+		"prefix": "comp",
+		"body": [
+			"(function(){",
+			"",
+			"	app.module.component('$1', {",
+			"		templateUrl: '$2', ",
+			"		controller: ControllerFn,",
+			"		bindings: {",
+			"			$4",
+			"		}",
+			"	});",
+			"",
+			"	function ControllerFn($scope, $element, $attrs){",
+			"		var ctrl = this;",
+			"		$5",
+			"	}",
+			"",
+			"})();"
+		]
+	},
+	"Gulp Stream": {
+		"prefix": "stream",
+		"body": [
+			"var stream = gulp.src(${1:source})",
+			"	.pipe($2)$3;",
+			"",
+			"return stream;"
+		]
+	},
+	"Gulp Replace": {
+		"prefix": "replace",
+		"body": [
+			".pipe(",
+			"	replace(${1:regEx}, ${2:value}))"
+		]
+	},
+	//PPM Service
+	"PPM Service": {
+		"prefix": "service",
+		"body": [
+			"var $1 = PPMService.extend({",
+			"	defaults: {",
+			"		loggerName: '$2'",
+			"	}",
+			"});"
+		]
+	},
+	"PPM Authenticated GET": {
+		"prefix": "PPM - GET",
+		"body": [
+			"/*==$1==*/",
+			"$2: function() {",
+			"	var logger = this.get('logger');",
+			"	var thiz = this;",
+			"	var deferred = $.Deferred();",
+			"	",
+			"	logger.log('Getting $3...')",
+			"	",
+			"	services.auth.getAuthToken().done(onSuccess);",
+			"	",
+			"	function onSuccess(token){",
+			"		/*--call the endpoint--*/",
+			"		$.ajax({",
+			"			url: endpoints.$4,",
+			"			headers: thiz.getAuthenticatedHeaders(token),",
+			"			method: 'GET',",
+			"			error: onError",
+			"		}).done(function (data) {",
+			"			/*--resolve the promise--*/",
+			"			deferred.resolve(data);",
+			"		});",
+			"	",
+			"		function onError(error) {",
+			"			logger.error(error);",
+			"			deferred.reject();",
+			"		}",
+			"	",
+			"	}",
+			"	",
+			"	return deferred.promise();",
+			"}"
+		]
+	},
+	"PPM Unauthenticated GET": {
+		"prefix": "GET",
+		"body": [
+			"/*==$1==*/",
+			"$2: function() {",
+			"	var logger = this.get('logger');",
+			"	var thiz = this;",
+			"	var deferred = $.Deferred();",
+			"	",
+			"	logger.log('Getting $3...')",
+			"	",
+			"	/*--call the endpoint--*/",
+			"	$.ajax({",
+			"		url: endpoints.$4,",
+			"		headers: thiz.getNonAuthHeaders(),",
+			"		method: 'GET',",
+			"		error: onError",
+			"	}).done(function (data) {",
+			"		/*--resolve the promise--*/",
+			"		deferred.resolve(data);",
+			"	});",
+			"	",
+			"	function onError(error) {",
+			"		logger.error(error);",
+			"		deferred.reject();",
+			"	}",
+			"	",
+			"	return deferred.promise();",
+			"}"
+		]
+	},
+	"PPM Authenticated POST/PATCH/PUT": {
+		"prefix": "POST PATCH PUT",
+		"body": [
+			"/*==$1==*/",
+			"$2: function(data) {",
+			"	var logger = this.get('logger');",
+			"	var thiz = this;",
+			"	var deferred = $.Deferred();",
+			"	",
+			"	logger.log('Uploading $3...')",
+			"	",
+			"	services.auth.getAuthToken().done(onSuccess);",
+			"	",
+			"	function onSuccess(token){",
+			"		/*--call the endpoint--*/",
+			"		$.ajax({",
+			"			url: endpoints.$,",
+			"			headers: thiz.getAuthenticatedHeaders(token),",
+			"			method: '$4',",
+			"			data: JSON.stringify(data),",
+			"			error: onError",
+			"		}).done(function (data) {",
+			"			/*--resolve the promise--*/",
+			"			deferred.resolve(data);",
+			"		});",
+			"	",
+			"		function onError(error) {",
+			"			logger.error(error);",
+			"			deferred.reject();",
+			"		}",
+			"	",
+			"	}",
+			"	",
+			"	return deferred.promise();",
+			"}"
+		]
+	},
+	"IntegrationModelServiceCall": {
+		"prefix": "serviceCall",
+		"body": [
+			" /*===$1===*/",
+			"$2: function ($3) {",
+			"var logger = this.logger();",
+			"var model = this;",
+			"var deferred = $.Deferred();",
+			"",
+			"/*--build the ajax request--*/",
+			"$.ajax({",
+			" url: urlConfig.endpoints.$4,",
+			"headers: model.getAuthenticatedHeaders(globalAuth.get('authToken')),",
+			"method: 'GET',",
+			"success: onSuccess,",
+			"error: onError",
+			"});",
+			"",
+			"function onSuccess(data) {",
+			"logger.log('$5 successfully retrieved!', data);",
+			"",
+			"//resolve the promise",
+			"deferred.resolve(data);",
+			"}",
+			"",
+			"function onError(error) {",
+			"logger.error('$5 retrieval failed!', error);",
+			"",
+			"//reject the promise",
+			"deferred.reject();",
+			"}",
+			"",
+			"return deferred;",
+			"}"
+		]
+	},
+	//Service data tests
+	"Service Call Test": {
+		"prefix": "service test",
+		"body": [
+			"describe('$1', function () {",
+			"	var response = undefined;",
+			"	var logger = Logbone.getLogger('$2', '$3');",
+			"	",
+			"	/*--test response data--*/",
+			"	",
+			"	before$4(function (done) {",
+			"		services.$5.$6().done(onSuccess);",
+			"		",
+			"		function onSuccess(data){",
+			"			logger.debug('$7 Data retrieved! %O', data);",
+			"			response = data;",
+			"			",
+			"			/*--call done so Jasmine knows we're ready to test--*/",
+			"			done();",
+			"		}",
+			"	});",
+			"});"
+		]
+	},
+	"modelCall": {
+		"prefix": "modelCall",
+		"body": [
+			"function ($1) {",
+			" var logger = this.logger();",
+			"var model = this;",
+			"var deferred = $.Deferred();",
+			"",
+			"$2",
+			"",
+			"return deferred;",
+			"}"
+		]
+	},
+	//test snippets
+	"Positive integer number test": {
+		"prefix": "test matches positive integer",
+		"body": [
+			"it('$1 is a positive integer', function(){ ",
+			"	expect($2).toMatch(formats.numberPositiveInteger)",
+			"});"
+		]
+	},
+	"Positive number two decimal places test": {
+		"prefix": "test matches positive two decimal places",
+		"body": [
+			"it('$1 is a positive integer', function(){ ",
+			"	expect($2).toMatch(formats.numberPositiveTwoDecimal)",
+			"});"
+		]
+	},
+	"Semantic version number test": {
+		"prefix": "test matches semantic version number",
+		"body": [
+			"it('$1 is a semantic version number', function(){ ",
+			"	expect($2).toMatch(formats.semanticVersion)",
+			"});"
+		]
+	},
+	"Non-empty string test": {
+		"prefix": "test string not empty.",
+		"body": [
+			"it('$1 is a non-empty string', function(){ ",
+			"	expect($2.length).toBeGreaterThan(0)",
+			"});"
+		]
+	},
+	//jasmine snippets
+	"Jasmine Spec for 'it'": {
+		"prefix": "it",
+		"body": [
+			"it('$1', () => {",
+			"	$2",
+			"});"
+		]
+	},
+	"Jasmine Spec for 'describe'": {
+		"prefix": "describe",
+		"body": [
+			"describe('$1', () => {",
+			"	$2",
+			"});"
+		]
+	},
+	"Jasmine Spec for 'beforeEach'": {
+		"prefix": "before each",
+		"body": [
+			"beforeEach( () => {",
+			"	$1",
+			"});"
+		]
+	},
+	"Jasmine Spec for 'beforeAll'": {
+		"prefix": "before all",
+		"body": [
+			"beforeAll( () => {",
+			"	$1",
+			"});"
+		]
+	},
+	"Jasmine Spec for 'expect.toBeDefined'": {
+		"prefix": "expect defined",
+		"body": [
+			"expect($1).toBeDefined();"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toBeDefined'": {
+		"prefix": "expect not defined",
+		"body": [
+			"expect($1).not.toBeDefined();"
+		]
+	},
+	"Jasmine Spec for 'expect.toBeUndefined'": {
+		"prefix": "expect undefined",
+		"body": [
+			"expect($1).toBeUndefined();"
+		]
+	},
+	"Jasmine Spec for 'expect.toBeTruthy'": {
+		"prefix": "expect truthy",
+		"body": [
+			"expect($1).toBeTruthy();"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toBeTruthy'": {
+		"prefix": "expect expect not truthy",
+		"body": [
+			"expect($1).not.toBeTruthy();"
+		]
+	},
+	"Jasmine Spec for 'expect.toBeFalsy'": {
+		"prefix": "expect falsy",
+		"body": [
+			"expect($1).toBeFalsy();"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toBeFalsy'": {
+		"prefix": "expect not falsy",
+		"body": [
+			"expect($1).not.toBeFalsy();"
+		]
+	},
+	"Jasmine Spec for 'expect.toContain'": {
+		"prefix": "expect contains",
+		"body": [
+			"expect($1).toContain($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toContain'": {
+		"prefix": "expect does not contain",
+		"body": [
+			"expect($1).not.toContain($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.toBeLessThan'": {
+		"prefix": "expect less than",
+		"body": [
+			"expect($1).toBeLessThan($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toBeLessThan'": {
+		"prefix": "expect not less than",
+		"body": [
+			"expect($1).not.toBeLessThan($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.toBeGreaterThan'": {
+		"prefix": "expect greater than",
+		"body": [
+			"expect($1).toBeGreaterThan($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toBeGreaterThan'": {
+		"prefix": "expect not greater than",
+		"body": [
+			"expect($1).not.toBeGreaterThan($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toBeUndefined'": {
+		"prefix": "expect not undefined",
+		"body": [
+			"expect($1).not.toBeUndefined();"
+		]
+	},
+	"Jasmine Spec for 'expect.toBeNull'": {
+		"prefix": "expect null",
+		"body": [
+			"expect($1).toBeNull();"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toBeNull'": {
+		"prefix": "expect not null",
+		"body": [
+			"expect($1).toBeNull();"
+		]
+	},
+	"Jasmine Spec for 'expect.toMatch'": {
+		"prefix": "expect match",
+		"body": [
+			"expect($1).toMatch($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toMatch'": {
+		"prefix": "expect not match",
+		"body": [
+			"expect($1).not.toMatch($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.toEqual'": {
+		"prefix": "expect equal",
+		"body": [
+			"expect($1).toEqual($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toEqual'": {
+		"prefix": "expect not equal",
+		"body": [
+			"expect($1).not.toEqual($2);"
+		]
+	},
+	"Jasmine Spec for 'expect.toHaveBeenCalled'": {
+		"prefix": "expect toHaveBeenCalled",
+		"body": [
+			"expect($1).toHaveBeenCalled();"
+		]
+	},
+	"Jasmine Spec for 'expect.not.toHaveBeenCalled'": {
+		"prefix": "expect NOT toHaveBeenCalled",
+		"body": [
+			"expect($1).not.toHaveBeenCalled();"
+		]
+	},
+	"Jasmine Spec for 'expect.toThrow'": {
+		"prefix": "expect toThrow",
+		"body": [
+			"expect($1).toThrow();"
+		]
+	},
+	"Strict Self-Invoking Function": {
+		"prefix": "strict-fn",
+		"body": [
+			"(function(){",
+			"	'use strict';",
+			" 	$1",
+			"})();"
+		]
+	}
+}
