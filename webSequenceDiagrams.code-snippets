@@ -1,0 +1,76 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"Request/Response Loop": {
+		"scope": "plaintext",
+		"prefix": "wsd - Request/Response Loop",
+		"body": [
+			"${1:sender}->+${2:receiver}: ${3:requestText}",
+			"${2:receiver}-->-${1:sender}: ${4:responseText}${0}"
+		],
+		"description": "Request/Response Loop"
+	},
+	"Web Sequence Diagram - Request": {
+		"scope": "plaintext",
+		"prefix": "wsd - Request",
+		"body": [
+			"${1:sender}->${2:receiver}: ${3:requestText}${0}"
+		],
+		"description": "Request"
+	},
+	"Web Sequence Diagram - Request (start activation block)": {
+		"scope": "plaintext",
+		"prefix": "wsd - Request start activation block",
+		"body": [
+			"${1:sender}->+${2:receiver}: ${3:requestText}${0}"
+		],
+		"description": "Request starts activation block"
+	},
+	"Web Sequence Diagram - Response": {
+		"scope": "plaintext",
+		"prefix": "wsd - Response",
+		"body": [
+			"${1:receiver}-->${2:sender}: ${3:requestText}${0}"
+		],
+		"description": "Response"
+	},
+	"Web Sequence Diagram - Response (close activation block)": {
+		"scope": "plaintext",
+		"prefix": "wsd - Response ends activation block ",
+		"body": [
+			"${1:receiver}-->${2:sender}: ${3:requestText}${0}"
+		],
+		"description": "Response ends an activation block"
+	},
+	"Web Sequence Diagram - Alt": {
+		"scope": "plaintext",
+		"prefix": "wsd- alt block",
+		"body": [
+			"alt ${condition}",
+			"  ${call}",
+			"end${0}"
+		],
+		"description": "Alt block"
+	},
+	"Web Sequence Diagram - Opt": {
+		"scope": "plaintext",
+		"prefix": "wsd - opt",
+		"body": [
+			"opt ${description}",
+			"  ${call}",
+			"end${0}"
+		]
+	},
+	"Web Sequence Diagram - Self Call": {
+		"scope": "plaintext",
+		"prefix": "wsd - self call",
+		"body": [
+			"${self}->${self}: ${callText}"
+		]
+	}
+}
